@@ -3,7 +3,7 @@ pragma solidity ^0.8.14;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "./lib/libs/zk-connect/ZkConnectLib.sol";
+import "sismo-connect-solidity/SismoLib.sol";
 import "./interfaces/IInterchainQueryRouter.sol";
 import "./interfaces/IMailbox.sol";
 import {ByteHasher} from "./helpers/ByteHasher.sol";
@@ -12,7 +12,7 @@ import "./interfaces/IInterchainGasPaymaster.sol";
 import "./interfaces/IReceiver.sol";
 import "./ZaisanSismoNFT.sol";
 
-contract ZaisanMain is ReentrancyGuard, ZkConnect {
+contract ZaisanMain is ReentrancyGuard, SismoConnect {
     using ECDSA for bytes32;
     using ByteHasher for bytes;
 
@@ -76,7 +76,7 @@ contract ZaisanMain is ReentrancyGuard, ZkConnect {
     constructor(
         bytes16 sismoAppId,
         bytes memory _worldCoinAppId
-    ) ZkConnect(sismoAppId) {
+    ) SismoConnect(sismoAppId) {
         worldCoinAppId = _worldCoinAppId;
         contractDeployer = msg.sender;
     }
@@ -202,7 +202,6 @@ contract ZaisanMain is ReentrancyGuard, ZkConnect {
         bytes32 _promotionId,
         address claimer,
         bytes memory zkConnectResponse,
-        bytes calldata encodedParams,
         uint root,
         uint nullifierHash,
         uint[8] calldata worldcoinProof
@@ -216,9 +215,7 @@ contract ZaisanMain is ReentrancyGuard, ZkConnect {
         // Sismo verification
         verify({
             responseBytes: zkConnectResponse,
-            authRequest: buildAuth({authType: AuthType.ANON}),
-            claimRequest: buildClaim({groupId: _promotion.groupId}),
-            messageSignatureRequest: encodedParams
+            claimRequest: buildClaim({groupId: _promotion.groupId})
         });
 
         // Worlcoin Verification
