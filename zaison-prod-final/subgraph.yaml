@@ -1,0 +1,33 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ZaisanMain
+    network: mumbai
+    source:
+      address: "0xecee92e5d6dd082d2e719e0def62c43bde9f71bf"
+      abi: ZaisanMain
+      startBlock: 34420208
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - GasTankFilled
+        - GasTankRefunded
+        - PromotionClaimed
+        - PromotionCreated
+      abis:
+        - name: ZaisanMain
+          file: ./abis/ZaisanMain.json
+      eventHandlers:
+        - event: GasTankFilled(bytes32,uint256)
+          handler: handleGasTankFilled
+        - event: GasTankRefunded(bytes32,uint256)
+          handler: handleGasTankRefunded
+        - event: PromotionClaimed(bytes32,address,uint256,uint256,uint256)
+          handler: handlePromotionClaimed
+        - event: PromotionCreated(bytes32,bytes16,uint32,uint256,string,address,uint256,string,address)
+          handler: handlePromotionCreated
+      file: ./src/zaisan-main.ts

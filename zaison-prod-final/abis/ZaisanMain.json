@@ -1,0 +1,499 @@
+[
+  {
+    "inputs": [
+      { "internalType": "bytes16", "name": "sismoAppId", "type": "bytes16" },
+      { "internalType": "bytes", "name": "_worldCoinAppId", "type": "bytes" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "_promotionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethGasLeft",
+        "type": "uint256"
+      }
+    ],
+    "name": "GasTankFilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "promotionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "GasTankRefunded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "promotionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "claimer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "claimsCount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethGasLeft",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "claimedAt",
+        "type": "uint256"
+      }
+    ],
+    "name": "PromotionClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "promotionId",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes16",
+        "name": "groupId",
+        "type": "bytes16"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "destinationDomain",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "claimsPerPerson",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "postId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ethGasLeft",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "badgeURI",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
+    ],
+    "name": "PromotionCreated",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADDRESSES_PROVIDER",
+    "outputs": [
+      {
+        "internalType": "contract IAddressesProvider",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "SISMO_CONNECT_LIB_VERSION",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "destinationDomain",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "destinationReceiver",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "mailboxAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "relayerGas", "type": "uint256" }
+    ],
+    "name": "addChain",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "appId",
+    "outputs": [{ "internalType": "bytes16", "name": "", "type": "bytes16" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bool", "name": "isSelectableByUser", "type": "bool" }
+    ],
+    "name": "buildSignature",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes", "name": "message", "type": "bytes" },
+          {
+            "internalType": "bool",
+            "name": "isSelectableByUser",
+            "type": "bool"
+          },
+          { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+        ],
+        "internalType": "struct SignatureRequest",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "message", "type": "bytes" },
+      { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+    ],
+    "name": "buildSignature",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes", "name": "message", "type": "bytes" },
+          {
+            "internalType": "bool",
+            "name": "isSelectableByUser",
+            "type": "bool"
+          },
+          { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+        ],
+        "internalType": "struct SignatureRequest",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bool", "name": "isSelectableByUser", "type": "bool" },
+      { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+    ],
+    "name": "buildSignature",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes", "name": "message", "type": "bytes" },
+          {
+            "internalType": "bool",
+            "name": "isSelectableByUser",
+            "type": "bool"
+          },
+          { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+        ],
+        "internalType": "struct SignatureRequest",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "message", "type": "bytes" },
+      { "internalType": "bool", "name": "isSelectableByUser", "type": "bool" },
+      { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+    ],
+    "name": "buildSignature",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes", "name": "message", "type": "bytes" },
+          {
+            "internalType": "bool",
+            "name": "isSelectableByUser",
+            "type": "bool"
+          },
+          { "internalType": "bytes", "name": "extraData", "type": "bytes" }
+        ],
+        "internalType": "struct SignatureRequest",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }],
+    "name": "chains",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "destinationReceiverAddress",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "mailboxAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "relayerGas", "type": "uint256" },
+      { "internalType": "bool", "name": "isExists", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_promotionId", "type": "bytes32" },
+      { "internalType": "address", "name": "claimer", "type": "address" },
+      { "internalType": "bytes", "name": "zkConnectResponse", "type": "bytes" },
+      { "internalType": "uint256", "name": "root", "type": "uint256" },
+      { "internalType": "uint256", "name": "nullifierHash", "type": "uint256" },
+      {
+        "internalType": "uint256[8]",
+        "name": "worldcoinProof",
+        "type": "uint256[8]"
+      }
+    ],
+    "name": "claimPromotion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "", "type": "bytes32" },
+      { "internalType": "address", "name": "", "type": "address" }
+    ],
+    "name": "claims",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "destinationDomain",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "promotionAddress",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "claimsCount", "type": "uint256" },
+      {
+        "internalType": "enum ZaisanMain.ClaimState",
+        "name": "state",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "claimsPerPerson",
+            "type": "uint256"
+          },
+          { "internalType": "string", "name": "badgeURI", "type": "string" },
+          { "internalType": "string", "name": "postId", "type": "string" },
+          {
+            "internalType": "address",
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          { "internalType": "bytes16", "name": "groupId", "type": "bytes16" },
+          {
+            "internalType": "uint32",
+            "name": "destinationDomain",
+            "type": "uint32"
+          },
+          { "internalType": "uint256", "name": "salt", "type": "uint256" }
+        ],
+        "internalType": "struct ZaisanMain.PromotionParams",
+        "name": "promotionParams",
+        "type": "tuple"
+      }
+    ],
+    "name": "createPromotion",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_promotionId", "type": "bytes32" }
+    ],
+    "name": "fillGas",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "destinationDomain",
+        "type": "uint32"
+      }
+    ],
+    "name": "getQuotedPayment",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "igp",
+    "outputs": [
+      {
+        "internalType": "contract IInterchainGasPaymaster",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "iqsRouter",
+    "outputs": [
+      {
+        "internalType": "contract IInterchainQueryRouter",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "mailbox",
+    "outputs": [
+      { "internalType": "contract IMailbox", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "name": "promotions",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "promotionAddress",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "creator", "type": "address" },
+      { "internalType": "uint256", "name": "createdAt", "type": "uint256" },
+      {
+        "internalType": "uint32",
+        "name": "destinationDomain",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "claimsPerPerson",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "ethGasLeft", "type": "uint256" },
+      { "internalType": "bytes16", "name": "groupId", "type": "bytes16" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_promotionId", "type": "bytes32" },
+      { "internalType": "address", "name": "_to", "type": "address" }
+    ],
+    "name": "refundGas",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "worldIDStaging",
+    "outputs": [
+      { "internalType": "contract IWorldID", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

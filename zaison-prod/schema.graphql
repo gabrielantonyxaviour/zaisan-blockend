@@ -1,0 +1,20 @@
+type Promotion @entity {
+  id: ID!
+  groupId: Bytes!
+  destinationDomain: BigInt!
+  claimsPerPerson: BigInt!
+  postId: String!
+  tokenAddress: Bytes!
+  ethGas: BigInt!
+  badgeURI: String!
+  creator: Bytes!
+  createdAt: BigInt!
+}
+
+type Claim @entity {
+  id: ID!
+  promotionId: Promotion!
+  claimer: Bytes!
+  currentClaims: BigInt!
+  claimedAt: BigInt!
+}

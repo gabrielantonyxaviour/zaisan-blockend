@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PromotionMain
+    network: mumbai
+    source:
+      address: "0xA16A45934259353AAFb721BE992C5eed126dCF1d"
+      abi: PromotionMain
+      startBlock: 34397540
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - GasTankFilled
+        - GasTankRefunded
+        - NewChainAdded
+        - PromotionClaimed
+        - PromotionCreated
+      abis:
+        - name: PromotionMain
+          file: ./abis/PromotionMain.json
+      eventHandlers:
+        - event: GasTankFilled(bytes32,uint256)
+          handler: handleGasTankFilled
+        - event: GasTankRefunded(bytes32,address,uint256)
+          handler: handleGasTankRefunded
+        - event: NewChainAdded(uint32)
+          handler: handleNewChainAdded
+        - event: PromotionClaimed(bytes32,address,uint256,uint256,uint256)
+          handler: handlePromotionClaimed
+        - event: PromotionCreated(bytes32,bytes16,uint32,uint256,string,address,uint256,string,address)
+          handler: handlePromotionCreated
+      file: ./src/promotion-main.ts
