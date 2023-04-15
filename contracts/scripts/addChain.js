@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 const addChain = async (destinationDomain, destinationReceiver, relayerGas) => {
   const promotion = await ethers.getContractAt(
-    "PromotionMain",
+    "ZaisanMain",
     "0x70916226F39673412eB2503f9e07f05a2ab12182"
   );
   const args = [destinationDomain, destinationReceiver, relayerGas];
