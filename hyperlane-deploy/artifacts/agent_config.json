@@ -1,0 +1,38 @@
+{
+  "chains": {
+    "chiadoTestnet": {
+      "name": "chiadoTestnet",
+      "domain": 10200,
+      "addresses": {
+        "mailbox": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2",
+        "interchainGasPaymaster": "0x10c3B07b0e8F52e88b79260299C6eA9ada35088E",
+        "validatorAnnounce": "0xcFCC1ca8c8688b35D4090A16443Aa357224CE1e0"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "connection": {
+        "type": "http"
+      },
+      "index": {
+        "from": 3480208
+      }
+    },
+    "mumbai": {
+      "name": "mumbai",
+      "domain": 80001,
+      "addresses": {
+        "mailbox": "0xCC737a94FecaeC165AbCf12dED095BB13F037685",
+        "interchainGasPaymaster": "0x1717Bd1C0C04E2Ecec8800E241091C6Ef5aCd896",
+        "validatorAnnounce": "0x3Fc742696D5dc9846e04f7A1823D92cb51695f9a"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 32,
+      "connection": {
+        "type": "http"
+      },
+      "index": {
+        "from": 29390033
+      }
+    }
+  }
+}

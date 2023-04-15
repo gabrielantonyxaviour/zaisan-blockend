@@ -1,0 +1,48 @@
+{
+  "mantleTestnet": {
+    "multisigIsm": "0x41b26bD22d819830cCFd2797010AB39497577eD4",
+    "proxyAdmin": "0xf7AfDA827d0C7b707C169C9986838dAF27308475",
+    "mailbox": "0x1B47952ee53a7cE1371140241e74002F73B31b27",
+    "validatorAnnounce": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2",
+    "testRecipient": "0xcFCC1ca8c8688b35D4090A16443Aa357224CE1e0"
+  },
+  "goerli": {
+    "multisigIsm": "0x24Ddd5AC739fCf3a75499bD00671AAe1e7c3aF9a",
+    "testRecipient": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2"
+  },
+  "mumbai": {
+    "multisigIsm": "0x1B47952ee53a7cE1371140241e74002F73B31b27",
+    "testRecipient": "0x2bD7BAb490D886296A09Ff07458CFBF2e31425D1",
+    "proxyAdmin": "0x71da29Bde0629911b358Ef1128B21f0eAB6B0078",
+    "storageGasOracle": "0xCe55860907C90d35290849B30E4bD2039FF3AAe5",
+    "interchainGasPaymaster": "0x1717Bd1C0C04E2Ecec8800E241091C6Ef5aCd896",
+    "defaultIsmInterchainGasPaymaster": "0xb2bab05d81382fb2f5BE539eA2D48Fb99B3dd288"
+  },
+  "scrollTestnet": {
+    "multisigIsm": "0x41b26bD22d819830cCFd2797010AB39497577eD4",
+    "proxyAdmin": "0xf7AfDA827d0C7b707C169C9986838dAF27308475",
+    "mailbox": "0x1B47952ee53a7cE1371140241e74002F73B31b27",
+    "validatorAnnounce": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2",
+    "testRecipient": "0xcFCC1ca8c8688b35D4090A16443Aa357224CE1e0"
+  },
+  "polygonzkevmTestnet": {
+    "multisigIsm": "0x9F11BADB222c0C5B0B416C10706fbaa1e0821cAE",
+    "proxyAdmin": "0x24Ddd5AC739fCf3a75499bD00671AAe1e7c3aF9a",
+    "mailbox": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2",
+    "validatorAnnounce": "0xcFCC1ca8c8688b35D4090A16443Aa357224CE1e0",
+    "testRecipient": "0x2bD7BAb490D886296A09Ff07458CFBF2e31425D1",
+    "storageGasOracle": "0x95bbC60e3824642415c3a66dB2BCCA1076892E70",
+    "interchainGasPaymaster": "0xB87fe4d57862790AF898D1869fCd82e03D456c2e",
+    "defaultIsmInterchainGasPaymaster": "0xC944dc795BC3c1E67514156aBCdCe316e7deD6b6"
+  },
+  "chiadoTestnet": {
+    "multisigIsm": "0x9F11BADB222c0C5B0B416C10706fbaa1e0821cAE",
+    "proxyAdmin": "0x24Ddd5AC739fCf3a75499bD00671AAe1e7c3aF9a",
+    "mailbox": "0x953ae39E29DB19a6d3b9aB6db4986828edBEC2c2",
+    "validatorAnnounce": "0xcFCC1ca8c8688b35D4090A16443Aa357224CE1e0",
+    "testRecipient": "0xaAacB55298fFeF3e7731FE4d148bFDcc1B856423",
+    "storageGasOracle": "0xA28CB63803c887e2345FF0A3dcE1A10b4Ec75C82",
+    "interchainGasPaymaster": "0x10c3B07b0e8F52e88b79260299C6eA9ada35088E",
+    "defaultIsmInterchainGasPaymaster": "0x092B539496f9423ee5197C30c7c48A9CDAF3DDEa"
+  }
+}
